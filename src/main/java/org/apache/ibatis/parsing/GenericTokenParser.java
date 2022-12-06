@@ -1,5 +1,5 @@
 /*
- *    Copyright 2009-2022 the original author or authors.
+ *    Copyright 2010-2022 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -15,13 +15,17 @@
  */
 package org.apache.ibatis.parsing;
 
-/**
+/** 作用：
+ *    解析 ${}里面的内容
  * @author Clinton Begin
  */
 public class GenericTokenParser {
 
+  // 开启标识符
   private final String openToken;
+  // 结束标识符
   private final String closeToken;
+
   private final TokenHandler handler;
 
   public GenericTokenParser(String openToken, String closeToken, TokenHandler handler) {

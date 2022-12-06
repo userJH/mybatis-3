@@ -1,5 +1,5 @@
 /*
- *    Copyright 2009-2022 the original author or authors.
+ *    Copyright 2010-2022 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@ package org.apache.ibatis.parsing;
 import java.util.Properties;
 
 /**
+ *  通过解析的配置里面是否允许默认值以及配置取默认值的kv分隔符，去解析xml文件里面配置
+ *
  * @author Clinton Begin
  * @author Kazuki Shimizu
  */
@@ -71,6 +73,9 @@ public class PropertyParser {
       return (variables == null) ? defaultValue : variables.getProperty(key, defaultValue);
     }
 
+    // 根据是否开启默认值，优先取默认值
+    // 未开启默认值，或者默认值为空从variables取content作为key的值
+    // 最后若variables中无content这个key，返回"${ + content + }"
     @Override
     public String handleToken(String content) {
       if (variables != null) {

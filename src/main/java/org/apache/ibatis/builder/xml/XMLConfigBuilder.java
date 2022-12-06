@@ -1,5 +1,5 @@
 /*
- *    Copyright 2009-2022 the original author or authors.
+ *    Copyright 2010-2022 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -48,15 +48,16 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.type.JdbcType;
 
 /**
+ * xml配置文件解析的构建者
  * @author Clinton Begin
  * @author Kazuki Shimizu
  */
 public class XMLConfigBuilder extends BaseBuilder {
 
-  private boolean parsed;
-  private final XPathParser parser;
-  private String environment;
-  private final ReflectorFactory localReflectorFactory = new DefaultReflectorFactory();
+  private boolean parsed; //是否已经解析了
+  private final XPathParser parser; //解析器
+  private String environment; //环境
+  private final ReflectorFactory localReflectorFactory = new DefaultReflectorFactory(); //反射工厂
 
   public XMLConfigBuilder(Reader reader) {
     this(reader, null, null);
